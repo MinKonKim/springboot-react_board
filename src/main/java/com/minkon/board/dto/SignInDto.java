@@ -1,5 +1,6 @@
 package com.minkon.board.dto;
 
+import javax.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,11 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SignInDto {
-    private  String userEmail;
+    @NotBlank
+    private String userEmail;
+    @NotBlank
     private String userPassword;
-    private String userPasswordCheck;
-    private String userNickname;
-    private String userPhoneNumber;
-    private String userAddress;
-    private String userAddressDetail;
 }
