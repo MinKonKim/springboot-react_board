@@ -1,5 +1,6 @@
 package com.minkon.board.security;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.stereotype.Service;
@@ -45,5 +46,10 @@ public class TokenProvider {
                 .setExpiration(validity)
                 .signWith(SignatureAlgorithm.HS256, SECURITY_KEY)
                 .compact();
+    }
+
+    public String validate(String token) {
+        Claims claims = Jwts.parser().setSigningKey(SECURITY_KEY).parseClaimsJws(token).getBody();
+        return claims.getSubject();
     }
 }
