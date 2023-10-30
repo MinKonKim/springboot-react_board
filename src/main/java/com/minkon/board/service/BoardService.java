@@ -1,4 +1,4 @@
-package com.minkon.board.security;
+package com.minkon.board.service;
 
 import com.minkon.board.dto.ResponseDto;
 import com.minkon.board.entity.BoardEntity;
@@ -61,6 +61,20 @@ public class BoardService {
             return ResponseDto.setFailed("Database Error");
         }
 
+    }
+
+    public ResponseDto<List<BoardEntity>> getSearchList(String boardTitle){
+
+        List<BoardEntity> boardList = new ArrayList<BoardEntity>();
+        try {
+            boardList= boardRepository.findByBoardTitleContain(boardTitle);
+
+        }catch (Exception exception){
+            exception.printStackTrace();
+            return ResponseDto.setFailed("DB error");
+        }
+
+        return ResponseDto.setSuccess("Success",boardList);
     }
 
 }
