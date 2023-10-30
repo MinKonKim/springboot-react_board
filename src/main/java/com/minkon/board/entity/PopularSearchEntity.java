@@ -17,5 +17,5 @@ import lombok.NoArgsConstructor;
 public class PopularSearchEntity {
     @Id
     private String popularTerm;
-    private int popluarSearchCount;
+    private int popularSearchCount;
 }
